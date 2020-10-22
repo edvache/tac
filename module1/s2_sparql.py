@@ -18,6 +18,7 @@ def get_rows():
     SELECT DISTINCT ?person ?personLabel ?dateBirth ?dateDeath WHERE {
         ?person wdt:P27 wd:Q31 .
         ?person wdt:P106 wd:Q82955 .
+        ?person wdt:P21 wd:Q6581072 .
         ?person wdt:P569 ?dateBirth .
         OPTIONAL {?person wdt:P570 ?dateDeath .}
         SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
