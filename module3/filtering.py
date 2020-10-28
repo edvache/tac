@@ -14,8 +14,8 @@ sw = set(sw)
 
 
 def filtering(year):
-    path = f"{year}.txt"
-    output = open(f"{year}_keywords.txt", "w")
+    path = f"module3/{year}.txt"
+    output = open(f"module3/{year}_keywords.txt", "w")
 
     with open(path) as f:
         text = f.read()
