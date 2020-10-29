@@ -4,7 +4,7 @@ from collections import defaultdict
 import sys
 
 import spacy
-from spacy.lang.fr.examples import sentences 
+from spacy.lang.fr.examples import sentences
 
 nlp = spacy.load('fr_core_news_sm')
 
@@ -20,23 +20,31 @@ def test():
         else:
             print(f"'{doc.text}' contains no entities")
 
-def search():
-    text = open("data/all.txt").read()[:1000000]
+def search(arg):
+    text = open("module3/1922.txt").read()
     doc = nlp(text)
-    people = defaultdict(int)
+    entities = defaultdict(int)
     for ent in doc.ents:
-        if ent.label_ == "PER" and len(ent.text) > 3:
-            people[ent.text] += 1
-    sorted_people = sorted(people.items(), key=lambda kv: kv[1], reverse=True)
-    for person, freq in sorted_people[:10]:
-        print(f"{person} appears {freq} times in the corpus")
+        if arg == "PER" or arg == "LOC" or arg == "ORG":
+            if ent.label_ == arg and len(ent.text) > 3:
+                entities[ent.text] += 1
+            sorted_entities = sorted(entities.items(), key=lambda kv: kv[1], reverse=True)
+
+    for res, freq in sorted_entities[:10]:
+        print(f"{res} appears {freq} times in the corpus")
+
+
 
 if __name__ == "__main__":
     try:
         if sys.argv[1] == "test":
             test()
         elif sys.argv[1] == "search":
-            search()
+            try:
+                if sys.argv[2] == "PER" or sys.argv[2] == "LOC" or sys.argv[2] == "ORG":
+                    search(sys.argv[2])
+            except IndexError:
+                print("Unknown option, please use either 'PER' or 'LOC' or 'ORG' or 'ALL'")
         else:
             print("Unknown option, please use either 'test' or 'search'")
     except IndexError:
