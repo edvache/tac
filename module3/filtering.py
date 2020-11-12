@@ -12,6 +12,7 @@ sw += ["les", "plus", "cette", "fait", "faire", "être", "deux", "comme", "dont"
        "van", "het", "autre", "jusqu", "aucun", "suivant", "toute", "sauf", "celles",
        "lorsqu'", "portant outre", "etc", "ceux", "aucune", "aucun", "chaque", "selon",
        "chez", "elles", "elle", "même", "mêmes", "dès", "déjà", "leurs", "leur", "lorsqu", "celui"]
+
 sw = set(sw)
 
 
